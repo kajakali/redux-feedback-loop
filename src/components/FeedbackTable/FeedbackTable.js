@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import {withRouter} from 'react-router-dom';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -25,6 +26,10 @@ class FeedbackTable extends Component  {
     changeItem = (buttonType, id) => {
         console.log(buttonType, 'item with id', id);
         //TODO actually make the edit and delete buttons work
+        if(buttonType === 'edit'){
+            //send back to the feelings page
+            this.props.history.push('/feeling');
+        }
     }
     render() {
         const classes = this.props.classes;
@@ -58,4 +63,4 @@ class FeedbackTable extends Component  {
         );
     }
 }
-export default withStyles(styles)(FeedbackTable);
+export default withRouter(withStyles(styles)(FeedbackTable));
