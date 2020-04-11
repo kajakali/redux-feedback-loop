@@ -1,12 +1,34 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class NextButton extends Component {
     //requires next location to be passed down as props from parent
-    // in the format '/feelings'
+    // in the format '/feelings', and the response to the previous page to be
+    //passed along using response
     handleClick = () => {
       console.log("You are headed to", this.props.nextLocation);
-      ///CHANGE LOCATION???
+        if(!this.props.response){
+            alert('Response Required!');
+            return false
+        }
+        if(this.props.page === 'feeling' ){
+          console.log("sending this feeling to the reducer",this.props.response);
+          this.props.dispatch({ type: 'ADD_FEEDBACK', payload: {feeling : this.props.response}});  
+        }
+        if(this.props.page === 'understanding'){
+            console.log('sending the understanding level', this.props.response);
+            this.props.dispatch({ type: 'ADD_FEEDBACK', payload: {understanding : this.props.response}});
+        }
+        if(this.props.page === 'support'){
+            console.log('sending the support level', this.props.response);
+            this.props.dispatch({ type: 'ADD_FEEDBACK', payload: {support : this.props.response}});
+        }
+        if(this.props.page === 'comments'){
+            console.log('sending the comment', this.props.response);
+            this.props.dispatch({ type: 'ADD_FEEDBACK', payload: {comment : this.props.response}});
+        }
+
       this.props.history.push(this.props.nextLocation);
     } 
 
@@ -18,4 +40,4 @@ class NextButton extends Component {
     }
 }
 
-export default withRouter(NextButton);
+export default connect()(withRouter(NextButton));

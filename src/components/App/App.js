@@ -6,6 +6,7 @@ import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
+import Review from '../Review/Review';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
@@ -25,16 +26,19 @@ class App extends Component {
             <Link to="/">Home</Link>
             </li>
             <li>
-            <Link to="/">Feeling</Link>
+            <Link to="/feeling">Feeling</Link>
             </li>
             <li>
-            <Link to="/">Understanding</Link>
+            <Link to="/understanding">Understanding</Link>
             </li>
             <li>
-            <Link to="/">Support</Link>
+            <Link to="/support">Support</Link>
             </li>
             <li>
-            <Link to="/">Comments</Link>
+            <Link to="/comments">Comments</Link>
+            </li>
+            <li>
+            <Link to="/review">Review</Link>
             </li>
           </ul>
           <Route exact path="/" component={Home} />
@@ -42,6 +46,7 @@ class App extends Component {
           <Route path="/understanding" component={Understanding} />
           <Route path="/support" component={Support} />
           <Route path="/comments" component={Comments} />
+          <Route path="/review" component={Review} />
         </Router>
 
 
