@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import NextButton from '../NextButton/NextButton';
 import { connect } from 'react-redux';
+import FeedbackTable from '../FeedbackTable/FeedbackTable';
 
 
 //TODO material ui table these results
-//use material ui button
+
 
 
 class Review extends Component {
@@ -15,9 +16,8 @@ class Review extends Component {
       <div>
           <h1>Review your feedback</h1>
           <p>here is the information from the reducer</p>
-          {JSON.stringify(this.props.reduxStore)}
-          
-          <NextButton nextLocation='home' response='submit' />
+          <FeedbackTable list={[this.props.reduxStore.feedbackReducer]} button='edit'/> 
+          <NextButton nextLocation='success' response='submit' />
       </div>
     );
   }

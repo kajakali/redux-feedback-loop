@@ -18,13 +18,23 @@ app.post('/feedback', (req, res) => {
     pool.query(sqlText, [feedback.feeling, 
         feedback.understanding, 
         feedback.support, 
-        feedback.comment]).then( result => {
+        feedback.comments]).then( result => {
             res.sendStatus(201);
         }).catch( error => {
             console.log('error adding feedback to server', error);
             res.sendStatus(500);
         });
-})
+});
+
+app.get('/admin', (req, res) => {
+    let sqlText = `SELECT * FROM "feedback";`;
+    pool.query(sqlText).then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('error getting feedback list', error);
+        res.sendStatus(500);
+    });
+});
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {

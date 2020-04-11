@@ -7,19 +7,29 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 
-const feedbackReducer = (state={}, action) => {
+const feedbackReducer = (state={id:'current'}, action) => {
     if(action.type === 'ADD_FEEDBACK'){
         return {...state, ...action.payload};
     }
     if(action.type === 'CLEAR_FEEDBACK'){
-        return [{}];
+        return [{id:'current'}];
     }
     return state
 }
 
+const adminReducer = (state=[], action) => {
+    if(action.type === 'GET_ADMIN'){
+        return action.payload
+
+    }
+    return state
+}
 
 const storeInstance = createStore(
+    combineReducers({
         feedbackReducer,
+        adminReducer
+    }), 
     applyMiddleware(logger)
 );
 

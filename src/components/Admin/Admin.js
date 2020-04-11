@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import FeedbackTable from '../FeedbackTable/FeedbackTable';
 
-
+//TODO make a material ui table
 
 class Admin extends Component {
 
@@ -10,13 +11,13 @@ class Admin extends Component {
       return (
         <>
         <h2>Admin Page</h2>
-        {JSON.stringify(this.props.reduxStore)}
+        <FeedbackTable list={this.props.reduxStore.adminReducer} button='delete'/> 
         </>
       )
     }
 }
 
-const putReduxStoreOnProps = ({
+const putReduxStoreOnProps = (reduxStore) => ({
     reduxStore
 })
 
