@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 
+//TODO material-ui this button
+
 class NextButton extends Component {
     //requires next location to be passed down as props from parent
     // in the format '/feelings', and the response to the previous page to be
@@ -12,6 +14,14 @@ class NextButton extends Component {
             alert('Response Required!');
             return false
         }
+        if(this.props.response === 'submit'){
+            console.log('submitting your feedback!');
+            //TODO actually send the stuff from the reducer to the database
+            //TODO actually clear the reducer...
+            this.props.dispatch({ type: 'CLEAR_FEEDBACK'});  
+ 
+        }
+
         if(this.props.page === 'feeling' ){
           console.log("sending this feeling to the reducer",this.props.response);
           this.props.dispatch({ type: 'ADD_FEEDBACK', payload: {feeling : this.props.response}});  
@@ -28,6 +38,7 @@ class NextButton extends Component {
             console.log('sending the comment', this.props.response);
             this.props.dispatch({ type: 'ADD_FEEDBACK', payload: {comment : this.props.response}});
         }
+
 
       this.props.history.push(this.props.nextLocation);
     } 

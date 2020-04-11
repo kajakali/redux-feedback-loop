@@ -6,7 +6,7 @@ class Home extends Component {
     return (
       <div className="App">
           <h1>Home</h1>
-          <NextButton nextLocation='feeling' response='hi'/>
+          <NextButton nextLocation='feeling' response='begin'/>
       </div>
     );
   }

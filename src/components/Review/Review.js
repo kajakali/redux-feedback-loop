@@ -3,31 +3,28 @@ import NextButton from '../NextButton/NextButton';
 import { connect } from 'react-redux';
 
 
+//TODO material ui table these results
+//use material ui button
 
 
 class Review extends Component {
 
-  state = {
-    current: ''
-}
 
-  handleChange = (event) => {
-    this.setState({
-        current: event.target.value
-    });
-    console.log('change', this.state.current);
- 
-}
   render() {
     return (
       <div>
           <h1>Review your feedback</h1>
-          {/**display json of the feedback reducer here */}
+          <p>here is the information from the reducer</p>
+          {JSON.stringify(this.props.reduxStore)}
           
-          <NextButton nextLocation='home' page='review' response={this.state.current} />
+          <NextButton nextLocation='home' response='submit' />
       </div>
     );
   }
 }
 
-export default connect()(Review);
+const putReduxStateOnProps = (reduxStore) => ({
+    reduxStore
+})
+
+export default connect(putReduxStateOnProps)(Review);

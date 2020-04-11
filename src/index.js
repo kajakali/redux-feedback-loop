@@ -11,6 +11,9 @@ const feedbackReducer = (state={}, action) => {
     if(action.type === 'ADD_FEEDBACK'){
         return {...state, ...action.payload};
     }
+    if(action.type === 'CLEAR_FEEDBACK'){
+        return [{}];
+    }
     return state
 }
 
