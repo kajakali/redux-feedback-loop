@@ -22,7 +22,8 @@ class Support extends Component {
     return (
       <div>
           <h1>How Well Are You Being Supported?</h1>
-          <InputField             
+          <InputField           
+            type="number"  
             value={this.state.current}
             onChange={this.handleChange}
             label="My Current Support is a ..."

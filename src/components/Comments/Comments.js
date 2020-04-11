@@ -22,7 +22,8 @@ class Comments extends Component {
     return (
       <div>
           <h1>Any Comments?</h1>
-          <InputField             
+          <InputField 
+            type="text"            
             value={this.state.current}
             onChange={this.handleChange}
             label="My Comment is..."

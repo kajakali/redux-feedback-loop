@@ -18,7 +18,7 @@ class InputField extends Component {
       const classes = this.props.classes;
     return (
           <TextField 
-            type="text"
+            type={this.props.type}
             label={this.props.label}
             placeholder={this.props.placeholder}
             required

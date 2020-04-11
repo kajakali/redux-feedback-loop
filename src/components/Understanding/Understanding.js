@@ -20,7 +20,8 @@ class Understanding extends Component {
     return (
       <div>
           <h1>How Well Are You Understanding The Content?</h1>
-          <InputField             
+          <InputField     
+            type="number"        
             value={this.state.current}
             onChange={this.handleChange}
             label="My understanding is at a ..."
