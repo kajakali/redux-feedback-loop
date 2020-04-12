@@ -9,10 +9,23 @@ import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import Success from '../Success/Success';
 import Admin from '../Admin/Admin';
+import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from "react-router-dom";
 
 class App extends Component {
 
+  componentDidMount(){
+    this.fillAdminReducer();
+  }
+  fillAdminReducer = () => {
+    axios.get('/feedback').then( response => {
+        this.props.dispatch({
+            type: 'GET_ADMIN', payload: response.data
+        })
+    }).catch( error => {
+        console.log('error getting feedback list', error)
+    });
+  }
   
   render() {
     return (
@@ -65,4 +78,7 @@ class App extends Component {
   }
 }
 
-export default App;
+const putReduxStoreOnProps = (reduxStore) => ({
+  reduxStore
+})
+export default connect(putReduxStoreOnProps)(App);

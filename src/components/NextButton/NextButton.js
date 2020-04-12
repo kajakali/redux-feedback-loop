@@ -16,14 +16,14 @@ const styles = theme => ({
 class NextButton extends Component {
 
     fillAdminReducer = () => {
-        axios.get('/admin').then( response => {
+        axios.get('/feedback').then( response => {
             this.props.dispatch({
                 type: 'GET_ADMIN', payload: response.data
             })
         }).catch( error => {
             console.log('error getting feedback list', error)
         });
-    }
+      }
 
 
     //requires next location to be passed down as props from parent
@@ -79,7 +79,6 @@ class NextButton extends Component {
 
 
     render() {
-        const classes = this.props.classes;
       return (
           <>
           {/* JSON.stringify(this.props.reduxStore) */}

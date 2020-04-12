@@ -26,12 +26,25 @@ app.post('/feedback', (req, res) => {
         });
 });
 
-app.get('/admin', (req, res) => {
-    let sqlText = `SELECT * FROM "feedback";`;
+app.get('/feedback', (req, res) => {
+    let sqlText = `SELECT * FROM "feedback" ORDER BY "date";`;
     pool.query(sqlText).then(result => {
         res.send(result.rows);
     }).catch(error => {
         console.log('error getting feedback list', error);
+        res.sendStatus(500);
+    });
+});
+
+app.delete('/feedback/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log('delete request for id', reqId);
+    let sqlText = 'DELETE FROM "feedback" WHERE id=$1;';
+    pool.query(sqlText, [reqId]).then( (result) => {
+        console.log('feedback deleted');
+        res.sendStatus(200);
+    }).catch( (error) => {
+        console.log('error deleting feedback', error);
         res.sendStatus(500);
     });
 });

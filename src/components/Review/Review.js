@@ -15,7 +15,6 @@ class Review extends Component {
     return (
       <div>
           <h1>Review your feedback</h1>
-          <p>here is the information from the reducer</p>
           <FeedbackTable list={[this.props.reduxStore.feedbackReducer]} button='edit'/> 
           <NextButton nextLocation='success' response='submit' />
       </div>

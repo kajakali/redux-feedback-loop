@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NextButton from '../NextButton/NextButton';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 
