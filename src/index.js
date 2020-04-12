@@ -7,6 +7,31 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 
+
+import { render } from 'react-dom';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import pink from '@material-ui/core/colors/pink';
+import purple from '@material-ui/core/colors/purple';
+
+// use default theme
+// const theme = createMuiTheme();
+
+// Or Create your Own theme:
+const theme = createMuiTheme({
+  palette: {
+      primary: {main:purple[200]},
+    secondary: {main:pink[200]},
+  },
+})
+
+
+
+
+
+
+
+
+
 const feedbackReducer = (state={id:'current'}, action) => {
     if(action.type === 'ADD_FEEDBACK'){
         return {...state, ...action.payload};
@@ -33,5 +58,8 @@ const storeInstance = createStore(
     applyMiddleware(logger)
 );
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, document.getElementById('root'));
+ReactDOM.render(<MuiThemeProvider theme={theme}><Provider store={storeInstance}><App /></Provider></MuiThemeProvider>, document.getElementById('root'));
 registerServiceWorker();
+
+
+

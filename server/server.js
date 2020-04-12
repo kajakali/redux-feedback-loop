@@ -27,7 +27,7 @@ app.post('/feedback', (req, res) => {
 });
 
 app.get('/feedback', (req, res) => {
-    let sqlText = `SELECT * FROM "feedback" ORDER BY "date";`;
+    let sqlText = `SELECT * FROM "feedback" ORDER BY "date" DESC;`;
     pool.query(sqlText).then(result => {
         res.send(result.rows);
     }).catch(error => {
