@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import FeedbackTable from '../FeedbackTable/FeedbackTable';
 
-//TODO make a material ui table
 
 class Admin extends Component {
 

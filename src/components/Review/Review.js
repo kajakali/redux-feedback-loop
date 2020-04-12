@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import NextButton from '../NextButton/NextButton';
 import { connect } from 'react-redux';
 import FeedbackTable from '../FeedbackTable/FeedbackTable';
-
-
-//TODO material ui table these results
+import NextButton from '../NextButton/NextButton';
 
 
 

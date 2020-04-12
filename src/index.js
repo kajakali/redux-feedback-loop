@@ -6,17 +6,12 @@ import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
-
-
-import { render } from 'react-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import pink from '@material-ui/core/colors/pink';
 import purple from '@material-ui/core/colors/purple';
 
-// use default theme
-// const theme = createMuiTheme();
 
-// Or Create your Own theme:
+// Create your Own theme:
 const theme = createMuiTheme({
   palette: {
       primary: {main:purple[200]},

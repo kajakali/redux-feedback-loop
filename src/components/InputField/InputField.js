@@ -20,7 +20,6 @@ class InputField extends Component {
             type={this.props.type}
             label={this.props.label}
             placeholder={this.props.placeholder}
-            required
             className={classes.textField}
             onChange={this.props.onChange}
             value={this.props.value}

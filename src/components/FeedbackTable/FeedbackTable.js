@@ -8,8 +8,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CreateIcon from '@material-ui/icons/Create';
 import axios from 'axios';
 
 
@@ -29,6 +27,9 @@ const styles = theme => ({
 
 class FeedbackTable extends Component  {
 
+    //this is the click handler for the edit or delete function
+    //the page using the table tells the table which sort of button
+    //to make - edit for the person's feedback, delete for the feedback array
     changeItem = (buttonType, id) => {
         console.log(buttonType, 'item with id', id);
         if(buttonType === 'edit'){
@@ -36,7 +37,9 @@ class FeedbackTable extends Component  {
             this.props.history.push('/feeling');
         }
         if(buttonType === 'delete'){
+            //take the feedback and remove it from the database
             axios.delete(`/feedback/${id}`).then( (response) => {
+                //refill the admin reducer from the database
                 this.fillAdminReducer();
             }).catch( (error) => {
                 console.log('error in deleting feedback', error)
@@ -52,6 +55,7 @@ class FeedbackTable extends Component  {
             console.log('error getting feedback list', error)
         });
       }
+      
     render() {
         const classes = this.props.classes;
         return (

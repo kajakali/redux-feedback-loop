@@ -36,7 +36,7 @@ class App extends Component {
         </header>
         <br/>
         <Router>
-          <ul>
+{/*           <ul>
             <li>
             <Link to="/">Home</Link>
             </li>
@@ -61,7 +61,7 @@ class App extends Component {
             <li>
             <Link to="/admin">Admin</Link>
             </li>
-          </ul>
+          </ul> */}
           <Route exact path="/" component={Home} />
           <Route path="/feeling" component={Feeling} />
           <Route path="/understanding" component={Understanding} />

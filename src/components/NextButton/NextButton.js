@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import axios from 'axios';
@@ -47,9 +47,6 @@ class NextButton extends Component {
             }).catch( error => {
                 console.log('unable to send feedback to database', error);
             })
- 
- 
- 
         }
         //put the feeling in the reducer
         if(this.props.page === 'feeling' ){
@@ -71,7 +68,6 @@ class NextButton extends Component {
             console.log('sending the comment', this.props.response);
             this.props.dispatch({ type: 'ADD_FEEDBACK', payload: {comments : this.props.response}});
         }
-
       console.log("You are headed to", this.props.nextLocation);
       this.props.history.push(this.props.nextLocation);
     } 
